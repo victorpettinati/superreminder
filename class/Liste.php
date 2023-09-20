@@ -1,6 +1,6 @@
 <?php
 
-class List {
+class Liste {
 
     private $id;
 
