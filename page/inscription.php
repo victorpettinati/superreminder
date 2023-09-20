@@ -13,9 +13,9 @@
         <h2>Inscription</h2>
         <form id="form_inscription" method="post" action="../module/module_inscription.php">
             <label for="nom">Nom</label>
-            <input type="text" name="nom" id="nom" placeholder="entrez votre prenom : ">
+            <input type="text" name="nom" id="nom" placeholder="entrez votre nom : ">
             <label for="prenom">Prenom</label>
-            <input type="text" name="prenom" id="prenom" placeholder="entrez votre nom : ">
+            <input type="text" name="prenom" id="prenom" placeholder="entrez votre prenom : ">
             <label for="email">Email</label>
             <input type="text" name="email" id="email" placeholder="entrez votre email : ">
             <label for="password">Password</label>

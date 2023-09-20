@@ -9,8 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user = new User();
 
     // Récupérez les données du formulaire
-    $name = $_POST["nom"];
-    $surname = $_POST["prenom"];
+    $nom = $_POST["nom"];
+    $prenom = $_POST["prenom"];
     $email = $_POST["email"];
     $password = $_POST["password"];
     $hash_password = sha1($password);
@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $hash_password2 = sha1($confirme_password);
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
-    $user->inscripUser($name, $surname, $email, $password, $birthdate);
+    $user->inscripUser($nom, $prenom, $email, $password);
     header("Location: ../page/connexion.php");
     exit;
 }
