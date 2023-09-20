@@ -8,6 +8,7 @@
 
 </head>
 <body>
+    <h1>Bonjour</h1>
     <a href="page/inscription.php">inscription</a>
     <a href="page/connexion.php">connexion</a>
 </body>
