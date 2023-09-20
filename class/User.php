@@ -1,5 +1,3 @@
-<<<<<<< Updated upstream
-=======
 <?php
 
 
@@ -221,4 +219,3 @@ class User {
         }
     }
 }
->>>>>>> Stashed changes
