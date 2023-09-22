@@ -53,7 +53,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "Laplateforme.06!";
-        $dbname = "superreminder";
+        $dbname = "to-do-list";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -100,7 +100,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "Laplateforme.06!";
-        $dbname = "superreminder";
+        $dbname = "to-do-list";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -144,7 +144,7 @@ class User {
         $servername = "localhost";
         $username = "root";
         $password = "Laplateforme.06!";
-        $dbname = "superreminder";
+        $dbname = "to-do-list";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -191,7 +191,7 @@ class User {
             $servername = "localhost";
             $username = "root";
             $password = "Laplateforme.06!";
-            $dbname = "superreminder";
+            $dbname = "to-do-list";
 
             
         try {
