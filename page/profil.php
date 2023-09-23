@@ -45,7 +45,9 @@ if (isset($userData)) {
             <input type="submit" value="Enter">
         </form>
     </div>
+    <a href="list_vue.php">voir vos liste.</a>
     <a href="deconnexion.php">deconnexion</a>
+    
 
 </body>
 

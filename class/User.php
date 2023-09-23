@@ -218,4 +218,55 @@ class User {
 
         }
     }
+
+    public function createList($id, string $list_name = "", string $list_content = ""){
+        $servername = "localhost";
+        $username = "root";
+        $password = "Clement2203$";
+        $dbname = "superreminder";
+    
+        try {
+            $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Connexion réussie<br>";
+    
+            $sql = "INSERT INTO list (id_user, list_name)
+            VALUES (:id_user, :list_name)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_user', $id, PDO::PARAM_STR);
+            $stmt->bindParam(':list_name', $list_name, PDO::PARAM_STR);
+            $stmt->execute();
+    
+            // Renvoyer l'ID de la liste créée
+            return $conn->lastInsertId();
+        } catch(PDOException $e) {
+            echo "Erreur : " . $e->getMessage();
+            // Gérer l'erreur, par exemple, renvoyer une valeur spécifique pour indiquer une erreur
+            return false;
+        }
+    }
+    
+
+        public function getList_list($id_user) {
+            $servername = "localhost";
+            $username = "root";
+            $password = "Clement2203$";
+            $dbname = "superreminder";
+        
+            try {
+                $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            } catch(PDOException $e) {
+                echo "Erreur de connexion : " . $e->getMessage();
+                return array(); // Retourne un tableau vide en cas d'erreur.
+            }
+        
+            $sql = "SELECT id, list_name FROM list WHERE id_user = :id_user";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':id_user', $id_user, PDO::PARAM_STR);
+            $stmt->execute();
+        
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        }
 }
