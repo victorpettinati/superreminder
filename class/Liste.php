@@ -50,12 +50,12 @@ class Liste {
         $this->list_content = $list_content;
     }
 
-    public function addExperience($id_cv, $exp_title, $date_start, $date_end, $exp_explanation){
+    public function addNote($id_list, $date_end, $note_content){
        
         $servername = "localhost";
         $username = "root";
         $password = "Clement2203$";
-        $dbname = "cv-crafter";
+        $dbname = "superreminder";
 
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -65,16 +65,14 @@ class Liste {
             echo "Erreur de connexion : " . $e->getMessage();
         }
 
-        $sql = "INSERT INTO experience (id_cv, exp_title, date_start, date_end, exp_explanation)
-        VALUES (:id_cv, :exp_title, :date_start, :date_end, :exp_explanation)";
+        $sql = "INSERT INTO note (id_list, date_end, note_content)
+        VALUES (:id_list, :date_end, :note_content)";
 
         try {
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
-            $stmt->bindParam(':exp_title', $exp_title, PDO::PARAM_STR);
-            $stmt->bindParam(':date_start', $date_start, PDO::PARAM_STR);
+            $stmt->bindParam(':id_list', $id_cv, PDO::PARAM_STR);
             $stmt->bindParam(':date_end', $date_end, PDO::PARAM_STR);
-            $stmt->bindParam(':exp_explanation', $exp_explanation, PDO::PARAM_STR);
+            $stmt->bindParam(':note_content', $exp_explanation, PDO::PARAM_STR);
 
             $stmt->execute();
             echo "Expérience ajoutée avec succès.";
@@ -94,7 +92,7 @@ class Liste {
     }
 
     public function readNote(){
-        
+
     }
 
     public function getCvDetails($id_cv) {
