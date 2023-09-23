@@ -70,12 +70,12 @@ class Liste {
 
         try {
             $stmt = $conn->prepare($sql);
-            $stmt->bindParam(':id_list', $id_cv, PDO::PARAM_STR);
+            $stmt->bindParam(':id_list', $id_list, PDO::PARAM_STR);
             $stmt->bindParam(':date_end', $date_end, PDO::PARAM_STR);
-            $stmt->bindParam(':note_content', $exp_explanation, PDO::PARAM_STR);
+            $stmt->bindParam(':note_content', $note_content, PDO::PARAM_STR);
 
             $stmt->execute();
-            echo "Expérience ajoutée avec succès.";
+            echo "Note ajoutée avec succès.";
             return true; // Retourne true pour indiquer le succès de l'opération.
         } catch(PDOException $e) {
             echo "Erreur : " . $e->getMessage();
