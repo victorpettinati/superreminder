@@ -16,7 +16,7 @@ if (($_SERVER["REQUEST_METHOD"] == "POST") && isset($_SESSION['username']) && is
 
     // Appelez la méthode inscripUser pour enregistrer l'utilisateur
     $cv->addNote($id_list, $date_end, $note_content);
-    // header("Location: ../page/list_vue.php");
+    header("Location: ../page/list_vue.php");
     exit;
 }
 

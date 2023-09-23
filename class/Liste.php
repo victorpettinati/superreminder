@@ -95,11 +95,11 @@ class Liste {
 
     }
 
-    public function getCvDetails($id_cv) {
+    public function getListDetails($id_list) {
         $servername = "localhost";
         $username = "root";
         $password = "Clement2203$";
-        $dbname = "cv-crafter";
+        $dbname = "superreminder";
     
         try {
             $conn = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
@@ -110,31 +110,16 @@ class Liste {
         }
     
         // Récupérez les expériences pour ce CV
-        $sql = "SELECT * FROM experience WHERE id_cv = :id_cv";
+        $sql = "SELECT * FROM note WHERE id_list = :id_list";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
+        $stmt->bindParam(':id_list', $id_list, PDO::PARAM_STR);
         $stmt->execute();
-        $experiences = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $notes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-        // Récupérez les formations pour ce CV
-        $sql = "SELECT * FROM formation WHERE id_cv = :id_cv";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
-        $stmt->execute();
-        $formations = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-        // Récupérez les loisirs pour ce CV
-        $sql = "SELECT * FROM loisir WHERE id_cv = :id_cv";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':id_cv', $id_cv, PDO::PARAM_STR);
-        $stmt->execute();
-        $loisirs = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
         // Vous pouvez maintenant retourner ces données pour les utiliser dans votre vue
         return [
-            'experiences' => $experiences,
-            'formations' => $formations,
-            'loisirs' => $loisirs,
+            'notes' => $notes
         ];
     }
 }

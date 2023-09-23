@@ -2,7 +2,7 @@
 <?php
 session_start();
 include '../class/User.php'; // Assurez-vous d'inclure correctement le fichier User.php
-
+include "../class/Liste.php";
 
 $user = new User(); // Créez une instance de la classe User
 
@@ -14,6 +14,20 @@ if (isset($_SESSION['username'])) {
     $userData = $user->getUserInfos($email);
 
 ?>
+<?php
+
+
+if (isset($_SESSION["id_list"]) && !empty($_SESSION["id_list"])) {
+    $list = new Liste;
+
+    // Récupérez les détails du CV en utilisant la méthode getCvDetails
+    $listDetails = $list->getListDetails($_SESSION["id_list"]);
+
+    // Maintenant, vous pouvez accéder aux expériences, formations et loisirs
+    $notes = $listDetails['notes']; // Utilisez la clé 'notes' pour accéder aux données
+    var_dump($notes);
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +47,7 @@ if (isset($_SESSION['username'])) {
 
     <div id="form">
         <form name="list_selector" id="list_selector" method="get" action="../module/module_selectList.php">
-        <label for="select_list">Sélectionnez un CV : </label>
+        <label for="select_list">Sélectionnez une liste : </label>
         <select id="select_list" name="select_list">
         <?php
 
@@ -57,8 +71,18 @@ if (isset($_SESSION['username'])) {
         <input type="submit" value="enter">
 
     </form>
+
+    <h1>list</h1>
+
+        <ul>
+            <?php foreach ($notes as $note) { ?>
+                <li> <?= $note['date_end'] ?></li>
+                <p><?= $note['note_content'] ?></p>
+            <?php } ?>
+        </ul>
+
 </body>
 
 <?php
-};
+}};
  ?>
