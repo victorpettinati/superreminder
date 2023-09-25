@@ -6,7 +6,7 @@ include "../class/Liste.php";
 
 $user = new User(); // Créez une instance de la classe User
 
-
+var_dump($_SESSION["username"]);
 if (isset($_SESSION['username'])) {
     $email = $_SESSION['username'];
     $session_id = $_SESSION["id"];
@@ -26,6 +26,7 @@ if (isset($_SESSION["id_list"]) && !empty($_SESSION["id_list"])) {
     // Maintenant, vous pouvez accéder aux expériences, formations et loisirs
     $notes = $listDetails['notes']; // Utilisez la clé 'notes' pour accéder aux données
     var_dump($notes);
+}
 ?>
 
 
@@ -84,5 +85,5 @@ if (isset($_SESSION["id_list"]) && !empty($_SESSION["id_list"])) {
 </body>
 
 <?php
-}};
+};
  ?>
